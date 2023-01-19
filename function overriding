@@ -1,0 +1,47 @@
+#include<iostream>    //function overriding
+using namespace std;
+class shape
+{
+    public:
+    double base,height;
+    shape(double a,double b)
+    {
+        base=a;
+        height=b;
+    }
+    virtual double area()
+    {
+     cout<<"The area of shapes: "<<endl;
+     return 0;
+    }
+};
+class triangle:public shape
+{
+    public:
+    triangle(double a,double b):shape(a,b){}
+    double area()  
+    {
+        cout<<"Triangle area: "<<endl;
+       return base*height*0.5;
+    }
+};
+class rectangle:public shape
+{
+    public:
+    rectangle(double a,double b):shape(a,b){}
+    double area()  
+    {
+      cout<<"rectangle area: "<<endl;
+       return base*height;
+    }
+};
+int main()
+{
+    shape *s;
+    triangle t(10,20);
+    s=&t;
+    cout<<s->area()<<endl;
+    rectangle r(10,20);
+    s=&r;
+    cout<<r.area();   
+}
